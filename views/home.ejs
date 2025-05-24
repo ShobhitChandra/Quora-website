@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME Quora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/Style.css">
+</head>
+
+<body>
+    <div class="nav">
+        <div class="navoptions">
+            <h1>Quora</h1>
+        </div>
+        <div class="navoptions"><button class="but" onclick="window.location.href='http://localhost:8080/post/new'">ADD POSTS</button></div>
+    </div>
+    <div class="main">
+        <div class="main-content">
+            <% for(let post of posts) { %>
+                <div class="Post">
+                    <h3 class="Userid">@<%= post.username %>
+                    </h3>
+                    <p class="cont">
+                        <%= post.content %>
+                    </p>
+                    <div class="edits">
+                        <button class="subbut" onclick="window.location.href='http://localhost:8080/post/<%=post.id%>/edit'">EDIT POST</button>
+                        <button class="subbut" onclick="window.location.href='http://localhost:8080/post/<%=post.id%>'">SEE IN DETAIL</button>
+                        <form action="/post/<%= post.id %>?_method=DELETE" method="post" id="idd">
+                            <button class="subbut">DELETE POST</button>
+                        </form>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+    </div>
+</body>
+
+</html>
